@@ -1,0 +1,21 @@
+{
+  "model_id": "Qwen/Qwen3.5-2B",
+  "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+  "model_path": "/Users/smitanand/Documents/Research/alternis-mlx/cache/huggingface/hub/models--Qwen--Qwen3.5-2B/snapshots/15852e8c16360a2fea060d615a32b45270f8a8fc",
+  "wikitext_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "arc_revision": "210d026faf9955653af8916fad021475a3f00453",
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "datasets": "5.1.0",
+    "huggingface-hub": "2.2.0",
+    "numpy": "2.4.6"
+  },
+  "news_revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+  "buddy_id": "Qwen/Qwen3-1.7B",
+  "buddy_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "buddy_model_path": "/Users/smitanand/Documents/Research/alternis-mlx/cache/huggingface/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "fresh_arc_count": 400,
+  "old_arc_excluded": 64,
+  "partition_rule": "AG News shuffled train records 0:5000 calibration, 5000:10000 validation; official test split held out"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "frozen_before_search",
+  "model": "Qwen/Qwen3-1.7B",
+  "ag_news_revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+  "imdb_revision": "e6281661ce1c48d982bc483cf8a173c1bbeb5d31",
+  "arc_revision": "210d026faf9955653af8916fad021475a3f00453",
+  "news_partition": "train shuffled seed 20261018 indices 25000:30000",
+  "imdb_partition": "official test shuffled seed 20261019 indices 5000:10000",
+  "arc_partition": "test excluding all earlier v1/v2/v3 IDs; shuffled seed 20261021; first 400",
+  "arc_count": 400,
+  "arc_ids_sha256": "52468cf6efb62e926e89901269383dd21d3c2eaa4966b9f3108db9f486fba3b3",
+  "arrays_sha256": {
+    "news_test_tokens.npy": "3ffb8e0f90fcc8a60e812dde797f70e731cb745ecc19f5cadc1638929c62213c",
+    "imdb_test_tokens.npy": "4a74614e73e3f52e417e3c9352031231232f459dd714726ca501a71fec50fc94"
+  }
+}

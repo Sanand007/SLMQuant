@@ -1,0 +1,65 @@
+{
+  "model": "Qwen/Qwen3.5-2B",
+  "group_size": 64,
+  "search_bits": [
+    2,
+    4,
+    8
+  ],
+  "population": 30,
+  "parent_pool": 3,
+  "evaluations_per_method_seed": 90,
+  "seeds": [
+    101,
+    211,
+    307,
+    401,
+    503,
+    601,
+    701,
+    809,
+    907,
+    1009
+  ],
+  "methods": [
+    "random",
+    "tournament",
+    "alternis"
+  ],
+  "sequence_length": 512,
+  "search_tokens": 16384,
+  "validation_tokens": 65536,
+  "test_tokens": 131072,
+  "calibration_tokens": 65536,
+  "sensitivity_tokens": 2048,
+  "task_questions": 400,
+  "max_runtime_hours": 12,
+  "max_disk_gb": 30,
+  "baseline_precision": [
+    3,
+    4,
+    6,
+    8
+  ],
+  "baselines": [
+    "higher_precision",
+    "uniform_3",
+    "uniform_4",
+    "uniform_6",
+    "uniform_8",
+    "loss_sensitivity",
+    "gptq_4",
+    "alternis_allocation_plus_gptq"
+  ],
+  "awq_control": "Qwen3-1.7B: higher precision, uniform 4, GPTQ 4, AWQ 4; compare only within this model",
+  "budget": "all allocation candidates at or below actual uniform-four-bit parameter bytes, including scales/biases; other precision baselines form a tradeoff curve",
+  "initialization": "same population per seed for all searches, containing uniform four-bit, a one-at-a-time loss-sensitivity allocation, perturbed informed allocations, and random allocations",
+  "sensitivity": "measure calibration NLL change from lowering each searchable matrix from 4 to 2 bits or raising it to 8; greedily choose bit allocation by predicted additive loss under the exact byte budget; explicitly a local-loss heuristic, not MLX's gradient method",
+  "operators": "two-point crossover, one elite, mutation probability 1/number of genes; identical repair; Alternis only changes parent selection",
+  "selection": "evaluate top three search candidates plus uniform four-bit and sensitivity allocation on validation; freeze each seed finalist and the best Alternis allocation before GPTQ combination and any test evaluation",
+  "gptq": "MLX GPTQ algorithm adapted only for per-module 2/4/8 choices and numerical safety; uniform GPTQ uses the same implementation and calibration",
+  "data": "search and quantizer calibration mix WikiText-2 training and AG News training; validation uses distinct AG News training records; test uses official AG News test; 400 ARC-Easy test questions exclude all 64 prior questions",
+  "runtime_rule": "freeze a shared evaluation budget after pilot, before search; prefer 120 evaluations, otherwise 90 or 60 if required by remaining time; log the choice. Three methods use the same budget.",
+  "analysis": "paired test NLL differences across ten seeds with bootstrap interval; task accuracy uncertainty; report per-run, mean and variability, actual bytes and speed; no test-driven selection or claim of general superiority",
+  "comparison_to_v1": "changes data, initialization, population, bit choices and budget simultaneously; cannot attribute v1-v2 change to any single improvement"
+}
