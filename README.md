@@ -159,17 +159,3 @@ For V3, all validation-selected random-search finalists were uniform four-bit. T
 The selected V3 representatives each use 968,001,536 quantized-parameter bytes. These results are a text-loss improvement at matched parameter storage, **not a percentage of weights removed or storage saved**. The task check did not improve: uniform-four answered 163/400 ARC-Challenge questions correctly (40.75%), tournament 156/400 (39%), and Alternis 158/400 (39.5%). Task and timing checks use one validation-selected global representative per method, not ten independent task/timing replicates.
 
 Generation speed was measured with greedy decoding, a fixed prompt, at most 128 generated tokens, and three retained trials after a warm-up. This small benchmark does not establish a robust speed ranking. The exported selected model was reloaded and its last-position vocabulary logits compared with the in-memory model; the original maximum difference was zero under a 0.01 tolerance. Model exports are not bundled; rerunning generates new exports.
-
-## Where to find new results
-
-- V2: `runs/<name>/v2/outcomes.json`, `summary.json`, `report.html`, `awq_control/outcomes.json`, and model directories.
-- V3: `runs/<name>/v3/studies/wide30_mlx_affine_qwen3_1_7b/` contains search histories, generation traces, `finalists.json`, `choices_frozen.json`, `heldout_text_fresh.json`, `heldout_task.json`, `benchmarks.json`, and the exported selected model.
-- V3's launcher does not recreate the paper layout. Use `results --folder ...` for the corrected aggregate and the JSON files for further analysis.
-
-Do not expect bit-for-bit floating-point agreement across hardware, OS, or library changes. Exact source, input data, model revision and seeds make the procedure inspectable and repeatable; kernel differences can still change close rankings. Record your environment and all deviations alongside a rerun. Do not tune settings after looking at test results and then call the same test an independent confirmation.
-
-## Uploading to a new repository
-
-Upload the **contents of this directory**, so `README.md` and `reproduce.py` sit at the repository root. Keep `evidence/`, `inputs/` and `MANIFEST.json`. Do not upload `models/`, `.venv/`, `runs/`, `.local_models.json`, authentication tokens, or generated caches. The supplied `.gitignore` excludes these. You can keep the ZIP itself as a release attachment rather than committing it inside the repository.
-
-Read `DATA_AND_LICENSES.md` before making the repository public. No software license has been chosen on the author's behalf. Add your intended license and final paper citation when publishing. The original environment and saved outputs are included for transparency; this packaging pass tested integrity, deterministic evidence summaries, isolated preparation and Python syntax, **not another full GPU rerun**.
