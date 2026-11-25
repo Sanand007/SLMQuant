@@ -2,13 +2,6 @@
 
 Code, frozen inputs, and saved results for the completed **V2** and **corrected V3** experiments by Smit Anand (`smit.anand033@gmail.com`). This repository accompanies *Selection Policies for Equal-Byte Mixed-Precision Quantization of Small Language Models*. It does not include the ongoing V4–V6 studies.
 
-There are two ways to use it:
-
-1. **Check the published evidence.** This takes little time, needs only Python, and does not download or run a language model.
-2. **Run the experiments again.** This downloads two model snapshots and runs the original MLX experiments in a new directory. It requires an Apple Silicon Mac and substantially more time and memory.
-
-The saved results are evidence from the original run. They are never used as completed checkpoints for a new experiment.
-
 ## What question are we asking?
 
 A small language model stores large tables of numbers called weight matrices. Quantization stores an approximation to each number using fewer bits. Four-bit quantization uses 16 possible codes per group, along with scale and offset information. It usually needs much less weight storage than a floating-point model.
